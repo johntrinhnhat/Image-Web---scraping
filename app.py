@@ -15,22 +15,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--remote-debugging-port=9222")
-
-# Specify the path to Chromium
-chrome_path = "/usr/bin/chromium-browser"
-chrome_options.binary_location = chrome_path
-
-driver = webdriver.Chrome(
-    service=Service("/usr/bin/chromedriver"),
-    options=chrome_options
-)
 
 IMAGE_TYPES = ['.jpg', '.png', '.jpeg', '.jfif', '.webp']
 
@@ -50,7 +34,12 @@ def loading_images():
 def fetch_images(url):
     all_images = []
     
-    # driver = webdriver.Chrome(service=Service(ChromeDriverManager("127.0.6533.89").install()), options=chrome_options)
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument("--disable-dev-shm-usage")
+
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     driver.get(url)
 
     while True:
