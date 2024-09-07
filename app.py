@@ -37,6 +37,7 @@ def loading_images():
 # Function to fetch images using Selenium
 def fetch_images(url):
     all_images = []
+    
     driver = webdriver.Chrome(service=Service(ChromeDriverManager("127.0.6533.89").install()), options=chrome_options)
     driver.get(url)
 
