@@ -1,1 +1,6 @@
-chromium-chromedriver
+# Add repository for Chromium
+deb http://deb.debian.org/debian buster main
+
+# Install Chromium and Chromedriver
+chromium
+chromium-driver
